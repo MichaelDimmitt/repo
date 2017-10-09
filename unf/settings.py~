@@ -81,6 +81,18 @@ DATABASES = {
     }
 }
 
+"""
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'SMIRK',
+	'USER':'root',
+        'PASSWORD':'appsec',
+	'HOST':'localhost',
+	'PORT':'',
+    }
+}
+"""
 
 # Password validation
 # https://docs.djangoproject.com/en/1.11/ref/settings/#auth-password-validators
