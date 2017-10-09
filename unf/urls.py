@@ -13,10 +13,11 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 from django.shortcuts import redirect
 from django.views.generic.base import RedirectView
+from smirk.resources import *
 
 urlpatterns = [
         url(r'^', admin.site.urls),
@@ -45,7 +46,22 @@ urlpatterns = [
 	url(r'^editInsAdmin', RedirectView.as_view(url='smirk/insurance_administrator/', permanent=False)),
 	url(r'^viewPatientProfile', RedirectView.as_view(url='smirk/patient/', permanent=False)),
 	url(r'^viewRecoveryPhrase', RedirectView.as_view(url='smirk/doctor/', permanent=False)),
-	url(r'^removeUserProfile', RedirectView.as_view(url='auth/user/', permanent=False))
+	url(r'^removeUserProfile', RedirectView.as_view(url='auth/user/', permanent=False)),
+	url(r'^api/', include(System_Administrator().urls)),
+	url(r'^api/', include(Doctor().urls)),
+	url(r'^api/', include(Nurse().urls)),
+	url(r'^api/', include(Medical_Administrator().urls)),
+	url(r'^api/', include(Insurance_Administrator().urls)),
+	url(r'^api/', include(Patient().urls)),
+	url(r'^api/', include(Record().urls)),
+	url(r'^api/', include(Doctor_Exam_Record().urls)),
+	url(r'^api/', include(Diagnosis_Record().urls)),
+	url(r'^api/', include(Test_Results_Record().urls)),
+	url(r'^api/', include(Insurance_Claim_Record().urls)),
+	url(r'^api/', include(Patient_Doctor_Correspondence_Record().urls)),
+	url(r'^api/', include(Raw_Record().urls)),
+	url(r'^api/', include(Note().urls)),
+
 ]
 
 admin.site.site_header= 'Secure Medical Information Repository Kit'

@@ -13,10 +13,11 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 from django.shortcuts import redirect
 from django.views.generic.base import RedirectView
+from smirk.resources import *
 
 urlpatterns = [
         url(r'^', admin.site.urls),
@@ -24,7 +25,7 @@ urlpatterns = [
 	url(r'^createDoctor', RedirectView.as_view(url='smirk/doctor/add/', permanent=False)),
 	url(r'^createNurse', RedirectView.as_view(url='smirk/nurse/add/', permanent=False)),
 	url(r'^createSysAdmin', RedirectView.as_view(url='smirk/system_administrator/add/', permanent=False)),
-	url(r'^creatMedAdmin', RedirectView.as_view(url='smirk/medical_administrator/add/', permanent=False)),
+	url(r'^createMedAdmin', RedirectView.as_view(url='smirk/medical_administrator/add/', permanent=False)),
 	url(r'^createInsAdmin', RedirectView.as_view(url='smirk/insurance_administrator/add/', permanent=False)),
 	url(r'^editPerm', RedirectView.as_view(url='auth/group/', permanent=False)),
 	url(r'^addDoctorExamRecord', RedirectView.as_view(url='smirk/doctor_exam_record/add/', permanent=False)),
@@ -45,7 +46,9 @@ urlpatterns = [
 	url(r'^editInsAdmin', RedirectView.as_view(url='smirk/insurance_administrator/', permanent=False)),
 	url(r'^viewPatientProfile', RedirectView.as_view(url='smirk/patient/', permanent=False)),
 	url(r'^viewRecoveryPhrase', RedirectView.as_view(url='smirk/doctor/', permanent=False)),
-	url(r'^removeUserProfile', RedirectView.as_view(url='auth/user/', permanent=False))
+	url(r'^removeUserProfile', RedirectView.as_view(url='auth/user/', permanent=False)),
+	url(r'^api/', include(System_Administrator().urls)),
+
 ]
 
 admin.site.site_header= 'Secure Medical Information Repository Kit'
