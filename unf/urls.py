@@ -61,7 +61,8 @@ urlpatterns = [
 	url(r'^api/', include(Patient_Doctor_Correspondence_Record().urls)),
 	url(r'^api/', include(Raw_Record().urls)),
 	url(r'^api/', include(Note().urls)),
-
+        url(r'^api/', include(User().urls)),
+        url(r'^api/', include(Group().urls)),
 ]
 
 admin.site.site_header= 'Secure Medical Information Repository Kit'

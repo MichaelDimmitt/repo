@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 's4($v(n4g#4jdty$sj4+9gnc^n@td-gk_3mj6p0g^v0%)9p=0b'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -86,7 +86,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'SMIRK',
 	'USER':'root',
-        'PASSWORD':'appsec',
+        'PASSWORD':'appsec',#appsec
 	'HOST':'localhost',
 	'PORT':'',
     }
